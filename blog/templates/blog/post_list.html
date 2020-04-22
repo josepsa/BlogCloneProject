@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="jumbotron">
+    {% for i in post_list %}
+<!--    post_list comes from name of model in small letter + '_list'-->
+    <div class="post">
+        <h1><a href="{% url 'post_details' pk=i.pk %}">{{ i.title }}</a> </h1>
+    </div>
+    <div class="date">
+        <p>Published on: {{ post.published|date:"D M Y" }}</p>
+    </div>
+    <a href="{% url 'post_details' pk=i.pk %}">Comments: {{ i.approve_comments.count }}</a>
+    {% endfor %}
+</div>
+{% endblock %}
